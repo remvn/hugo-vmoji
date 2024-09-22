@@ -1,0 +1,39 @@
+{{ $data := $.Site.Data.vmoji }}
+{{ $class := "emoji" }}
+{{ $filterParams := "q90 webp" }}
+
+{{ $image := "" }}
+{{ $name := "" }}
+{{ with .Get "name" }}
+    {{ $name = . }}
+    {{ $fileName := index $data . }}
+    {{ if ne $fileName nil }}
+        {{ $image = print "vmoji/" $fileName }}
+    {{ end }}
+{{ else }}
+    {{ with index .Params 0 }}
+        {{ $name = . }}
+        {{ $fileName := index $data . }}
+        {{ if ne $fileName nil }}
+            {{ $image = print "vmoji/" $fileName }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ if ne $image "" }}
+    {{ $filter := images.Process $filterParams }}
+    {{ with resources.Get $image }}
+        {{ $link := .RelPermalink }}
+        {{ if not (hasSuffix $image ".gif") }}
+            {{ with .Filter $filter }}
+                {{ $link = .RelPermalink }}
+            {{ end }}
+        {{ end }}
+        <img
+            src="{{ $link }}"
+            alt="{{ $name }}"
+            title="{{ $name }}"
+            class="{{ $class }}"
+        />
+    {{ end }}
+{{ end }}

@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	dir := "./static/vmoji/"
+	dir := "./assets/vmoji/"
 
 	files, err := os.ReadDir(dir)
 	if err != nil {
@@ -24,7 +24,7 @@ func main() {
 		fType := filepath.Ext(file.Name())
 		key := strings.TrimSuffix(file.Name(), fType)
 		switch fType {
-		case ".png", ".gif", ".jpg":
+		case ".png", ".gif", ".jpg", ".jpeg":
 			m[key] = file.Name()
 		default:
 			continue
@@ -37,7 +37,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = os.WriteFile(jsonFile, data, 0622)
+	err = os.WriteFile(jsonFile, data, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
