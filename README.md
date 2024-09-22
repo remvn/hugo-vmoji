@@ -59,10 +59,10 @@ module:
 
 ### 3. Add custom css 
 
-Create a `css` file at `./static` directory
+Create a `css` file at `./assets/css/` directory
 
 ```css
-/* ./static/custom.css */
+/* ./assets/css/custom.css */
 img.emoji {
     display: inline-block;
     height: 1.25em;
