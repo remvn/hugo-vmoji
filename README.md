@@ -52,9 +52,6 @@ or `config/_default/config.yaml`
 module:
   imports:
     - path: github.com/remvn/hugo-vmoji
-      mounts:
-        - source: layouts/shortcodes
-          target: layouts/shortcodes
 ```
 
 ### 3. Add custom css 
