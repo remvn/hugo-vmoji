@@ -62,6 +62,7 @@ Create a `css` file at `./assets/css/` directory
 /* ./assets/css/custom.css */
 img.emoji {
     display: inline-block;
+    vertical-align: text-bottom;
     height: 1.25em;
     width: auto;
     margin: 0;
