@@ -12,8 +12,8 @@ To this:
 ## Features 
 
 - Allow you to use your own emoji packs
-- Supports `.gif` images
-- Automatically converts `.png`, `.jpg`, etc. to `webp`
+- Supports `.gif`, `.png`, `.jpg`, `.svg` and `.webp` images
+- Automatically converts `.png`, `.jpg` images to `webp`
 - Images are lazy-loaded
 - Final build contains only images that are being used
 

@@ -25,7 +25,14 @@ func main() {
 		fType := filepath.Ext(file.Name())
 		key := strings.TrimSuffix(file.Name(), fType)
 		switch fType {
-		case ".png", ".gif", ".jpg", ".jpeg":
+		case
+			".webp",
+			".svg",
+			".gif",
+			".ico",
+			// types above can't be processed by filter
+			".jpg", ".jfif", ".jpeg",
+			".png", ".apng":
 			m[key] = file.Name()
 		default:
 			continue

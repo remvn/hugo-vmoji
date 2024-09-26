@@ -21,15 +21,27 @@
     {{ end }}
 {{ end }}
 
+{{ $ignore := slice ".webp" ".svg" ".gif" ".ico" }}
 {{ if ne $image "" }}
     {{ $filter := images.Process $filterParams }}
     {{ with resources.Get $image }}
         {{ $link := .RelPermalink }}
-        {{ if not (hasSuffix $image ".gif") }}
+
+        {{ $canFilter := true }}
+        {{ range $ignore }}
+            {{ if (hasSuffix $image .) }}
+                {{ $canFilter = false }}
+                {{ break }}
+            {{ end }}
+        {{ end }}
+
+        {{ if $canFilter }}
             {{ with .Filter $filter }}
                 {{ $link = .RelPermalink }}
             {{ end }}
         {{ end }}
+
+
         <img
             src="{{ $link }}"
             alt="{{ $name }}"
